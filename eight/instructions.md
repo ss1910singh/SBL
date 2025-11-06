@@ -6,4 +6,4 @@ run
 - ./docker_2.sh
 
 if on windows
- copy file 8th paste it in notepad and save it as 8th.bat
+ copy file 8th paste it in notepad and save it as 8th.bat, then simply click 7th.bad file created
