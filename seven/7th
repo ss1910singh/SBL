@@ -1,0 +1,58 @@
+@echo off
+echo.
+echo === 1. Checking Docker Version ===
+docker --version
+echo.
+
+echo === 2. Logging into Docker ===
+echo You may be prompted to enter your credentials.
+docker login
+echo.
+
+:: Check if login failed
+IF %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo !! Docker login FAILED!
+    pause
+    exit /b
+)
+
+echo === 3. Pulling 'alpine' image ===
+docker pull alpine
+echo.
+
+echo === 4. Running 'alpine' container in detached mode ===
+docker run -it -d alpine
+echo.
+
+echo === 5. Listing Docker images ===
+docker images
+echo.
+
+echo === 6. Finding and stopping the most recent container ===
+
+:: This 'for' loop captures the first line of output from 'docker ps -q'
+:: and stores it in the 'container_id' variable.
+set "container_id="
+for /f %%i in ('docker ps -q') do (
+    set "container_id=%%i"
+    goto :found_id
+)
+
+:found_id
+
+:: Check if the variable was set
+if defined container_id (
+    echo Stopping container: %container_id%
+    docker stop %container_id%
+) else (
+    echo No running containers were found to stop.
+)
+echo.
+
+echo === 7. Listing all running containers (should be empty) ===
+docker ps
+echo.
+
+echo All steps complete.
+pause
