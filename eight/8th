@@ -1,0 +1,92 @@
+@echo off
+echo Creating project files...
+
+:: Create the directory, hiding the "already exists" error if it's run twice
+mkdir simple_web_app 2>NUL
+
+:: 1. Create index.html (with your new text)
+(
+echo ^<!DOCTYPE html^>
+echo ^<html lang="en"^>
+echo ^<head^>
+echo ^<meta charset="UTF-8"^>
+echo ^<meta name="viewport" content="width=device-width, initial-scale=1.0"^>
+echo ^<title^>Docker Test Page^</title^>
+echo ^<style^>
+echo   body { font-family: Arial, sans-serif; margin: 40px; background-color: #f0f0f0; }
+echo   h1 { color: #333; }
+echo   p { color: #666; }
+echo ^</style^>
+echo ^</head^>
+echo ^<body^>
+echo ^<h1^>Docker is working^</h1^>
+echo ^<p^>And this is its testing^</p^>
+echo ^<script^>
+echo   console.log("Hello from JavaScript!");
+echo ^</script^>
+echo ^</body^>
+echo ^</html^>
+) > simple_web_app\index.html
+
+:: 2. Create httpd.conf
+(
+echo ServerName localhost
+) > simple_web_app\httpd.conf
+
+:: 3. Create Dockerfile
+(
+echo FROM httpd:latest
+echo COPY ./ /usr/local/apache2/htdocs/
+echo COPY httpd.conf /usr/local/apache2/conf/extra/httpd-custom.conf
+echo RUN echo "Include conf/extra/httpd-custom.conf" ^>^> /usr/local/apache2/conf/httpd.conf
+echo EXPOSE 80
+echo CMD ["httpd-foreground"]
+) > simple_web_app\Dockerfile
+
+echo Files created successfully.
+echo.
+
+echo Building Docker image (my-web-app)...
+cd simple_web_app
+docker build . -t my-web-app
+
+:: Check if build failed
+IF %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo !! Docker build FAILED!
+    echo Make sure Docker Desktop is running.
+    pause
+    exit /b
+)
+
+echo.
+echo Running Docker container in detached (background) mode...
+:: Remove old container if it exists, then run new one
+docker rm -f simple_web_app 2>NUL
+docker run --name simple_web_app -d -p 3000:80 my-web-app
+
+:: Check if run failed
+IF %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo !! Docker run FAILED!
+    pause
+    exit /b
+)
+
+echo.
+echo ---
+echo 🚀 Your web app is now running at: http://localhost:3000
+echo ---
+echo.
+echo This script will now pause.
+echo Press any key to STOP and REMOVE the container.
+pause > nul
+
+echo.
+echo Stopping and removing container...
+docker stop simple_web_app
+docker rm simple_web_app
+
+echo.
+echo Done. Press any key to exit.
+pause > nul
