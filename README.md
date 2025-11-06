@@ -1,60 +1,87 @@
-# SBL
-ALL
+# 🧩 Software Build Lab (SBL)
 
-================================================================================
-1. 
-Git installation and basic Git Commands
-Perform installation of Git Bash and Explore usage of basic Git Commands.
-a. Git installation
-b. Git configuration
-c. Starting A Project
-d. Day-To-Day Work
-e. Git branching model
-f. Review your work
+---
+
+## 📘 ALL EXPERIMENTS
+
+---
+
+### 🔹 1. Git Installation and Basic Git Commands
+
+**Objective:**  
+Perform installation of Git Bash and explore the usage of basic Git commands.
+
+**Tasks:**
+- a. Git installation  
+- b. Git configuration  
+- c. Starting a project  
+- d. Day-to-day work  
+- e. Git branching model  
+- f. Review your work  
+
+---
+
+### 🔹 2. Explore Git Commands
+
+**Objective:**  
+Explore advanced Git commands to perform various operations.
+
+**Tasks:**
+- a. Tagging known commits  
+- b. Reverting changes  
+- c. Synchronizing repositories  
+- d. Reverting changes  
+
+---
+
+### 🔹 3. Installation of Jenkins
+
+**Objective:**  
+To install and configure Jenkins to set up a build job.
+
+---
+
+### 🔹 4. Continuous Integration (CI)
+
+**Objective:**  
+To build the pipeline of jobs in Jenkins and create a pipeline script to deploy an application over a server.
+
+---
+
+### 🔹 5. Installation of Jenkins over Tomcat Server
+
+**Objective:**  
+To install the Tomcat server on Windows and run Jenkins over the Tomcat server.
+
+---
+
+### 🔹 6. Test Software Applications
+
+**Objective:**  
+To set up and run Selenium tests in Jenkins using Maven.
+
+---
+
+### 🔹 7. Containerization with Docker
+
+**Objective:**  
+To understand Docker architecture, install Docker, and execute Docker commands to manage and interact with containers.
+
+---
+
+### 🔹 8. Build an Image with Docker
+
+**Objective:**  
+To learn Dockerfile instructions and build an image for a sample web application on the Docker engine.
+
+---
+
+### 🔹 9. Installation and Configuration of Pull-Based Configuration Management Tools
+
+**Objective:**  
+To install and configure pull-based software configuration management and provisioning tools using **Ansible**, **Chef**, or **Puppet**.
 
 
-================================================================================
-2.
-Explore Git Commands to
-a. Tagging known commits
-b. Reverting changes.
-c. Synchronizing repositories.
-d. Reverting Changes
 
+---
 
-================================================================================
-3. Installation of Jenkins
-To install and configure Jenkins to setup a build Job.
-
-
-================================================================================
-4. Continuous Integration
-To build the pipeline of jobs in Jenkins, create a pipeline script to deploy an
-application over Server
-
-
-================================================================================
-5. Installation of Jenkins over Tomcat Server
-To install Tomcat Server on Windows and run Jenkins over Tomcat Server
-
-
-================================================================================
-6. Test Software Applications
-To Setup and Run Selenium Tests in Jenkins Using Maven
-
-
-================================================================================
-7. Containerization with Docker
-To understand Docker Architecture, install docker and execute docker
-commands to manage and interact with containers.
-
-
-================================================================================
-8. Build an image with Docker
-To learn Dockerfile instructions, build an image for sample web application on
-Docker Engine
-
-
-================================================================================
-9. To install and configure Pull based Software Configuration Management and
-provisioning tools using Ansible/Chef/Puppet
